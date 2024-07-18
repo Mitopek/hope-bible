@@ -8,13 +8,21 @@ const [useProvideBibleFacade, useBibleFacade] = createInjectionState(() => {
     selectedChapter,
     previousChapter,
     nextChapter,
+    availableBibles,
+    selectedBibleId,
+    fetchBibles,
+    currentVerses,
   } = $(useBible())
 
   return $$({
+    selectedBibleId,
+    availableBibles,
     selectedChapter,
     selectedBook,
     previousChapter,
+    currentVerses,
     nextChapter,
+    fetchBibles,
   })
 })
 

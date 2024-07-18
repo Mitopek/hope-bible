@@ -45,9 +45,7 @@ const emit = defineEmits<Emits>()
   padding: 2px 8px 3px 8px;
   display: grid;
   grid-template-columns: repeat(10, 44px);
-  row-gap: 8px;
-  column-gap: 12px;
-  font-size: 24px;
+  font-size: 20px;
   flex-wrap: wrap;
   background: map-get(variables.$colors, surfaceContainerLow);
 }

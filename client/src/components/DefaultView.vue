@@ -14,6 +14,10 @@
 
 <style scoped lang="scss">
 @use "../variables.scss" as variables;
+.default-view{
+  max-height: 100vh;
+}
+
 .header{
   width: 100%;
   height: 120px;

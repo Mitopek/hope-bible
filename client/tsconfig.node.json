@@ -6,9 +6,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
-    "types": ["@vue-macros/reactivity-transform/macros-global" /* ... */]
+    "types": ["@vue-macros/reactivity-transform/macros-global" /* ... */],
+    "strictNullChecks": false
   },
   "include": ["vite.config.ts"]
 }

@@ -3,6 +3,7 @@ import {$computed, $ref, $} from "@vue-macros/reactivity-transform/macros";
 import {BooksList} from "../constants/BooksList.ts";
 import ToggleTestament from "./ToggleTestament.vue";
 import {useBibleFacade} from "../composables/useBibleFacade.ts";
+import SelectComponent from "./ui/SelectComponent.vue";
 
 const books = $ref(BooksList)
 let isOldTestament = $ref(false)
@@ -11,7 +12,12 @@ const filteredBooks = $computed(() => {
   return books.filter(book => book.isOldTestament === isOldTestament)
 })
 
-let {selectedBook, selectedChapter} = $(useBibleFacade())
+let {
+  selectedBook,
+  selectedChapter,
+  availableBibles,
+  selectedBibleId,
+} = $(useBibleFacade())
 
 const onBookSelect = (book) => {
   selectedBook = book
@@ -36,20 +42,19 @@ const onBookSelect = (book) => {
 <style scoped lang="scss">
 @use "../variables.scss" as variables;
 .book-list{
-  background: map-get(variables.$colors, surfaceContainerLow);
 }
 
 .step-container{
-  width: 100%;
-  height: 1px;
-  padding: 8px;
-  color: map-get(variables.$colors, onSurface);
+  width: 90%;
+  height: 2px;
+  margin: 8px 0 0 0;
+  background: #e1e1e1;
 }
 
 .book-item{
   padding: 4px 12px;
   box-sizing: border-box;
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
   display: flex;
   justify-content: flex-start;

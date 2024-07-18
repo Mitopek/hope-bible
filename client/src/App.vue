@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <div id="teleported"/>
   <RouterView/>
 </template>
 

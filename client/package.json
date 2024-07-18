@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.1.1",
     "@vueuse/core": "^10.11.0",
+    "axios": "^1.7.2",
     "sass": "^1.77.6",
     "vue": "^3.4.29",
-    "vue-router": "^4.4.0"
+    "vue-router": "^4.4.0",
+    "vue3-perfect-scrollbar": "^2.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

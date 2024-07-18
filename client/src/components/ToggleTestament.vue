@@ -33,7 +33,6 @@ const emit = defineEmits<Emits>()
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  background: map-get(variables.$colors, surfaceContainer);
 }
 
 .icon{

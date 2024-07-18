@@ -13,7 +13,6 @@
 @use "../variables.scss" as variables;
 
 .history-list{
-  background: map-get(variables.$colors, surfaceContainerLow);
   padding: 8px;
   font-size: 22px;
   display: flex;

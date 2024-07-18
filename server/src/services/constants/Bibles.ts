@@ -1,0 +1,20 @@
+const bibles = [
+  { name: "Biblia Tysiąclecia", shortName: "bt" },
+  { name: "Biblia Warszawska", shortName: "bw" },
+  { name: "Biblia Ekumeniczna", shortName: "be" },
+  { name: "Biblia Warszawsko-Praska", shortName: "br" },
+  { name: "Edycja Świętego Pawła", shortName: "esp" },
+  { name: "Biblia Gdańska", shortName: "bg" },
+  { name: "Nowa Biblia Gdańska", shortName: "ng" },
+  { name: "Uwspółcześniona Biblia Gdańska", shortName: "ug" },
+  { name: "Biblia Brzeska", shortName: "bb" },
+  { name: "Biblia Poznańska", shortName: "bp" },
+  { name: "Biblia Jakuba Wujka", shortName: "jw" },
+  { name: "Biblia Mesjańska", shortName: "bm" },
+  { name: "Biblia w przekładzie Nowego Świata", shortName: "ns" },
+  { name: "Biblia Lubelska", shortName: "bl" },
+  { name: "Słowo Życia", shortName: "sz" },
+  { name: "Przekład dosłowny", shortName: "eib" },
+  { name: "Przekład Literacki", shortName: "snp" },
+  { name: "Biblia Toruńska", shortName: "tnp" }
+];
