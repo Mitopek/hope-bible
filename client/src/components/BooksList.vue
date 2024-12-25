@@ -15,8 +15,6 @@ const filteredBooks = $computed(() => {
 let {
   selectedBook,
   selectedChapter,
-  availableBibles,
-  selectedBibleId,
 } = $(useBibleFacade())
 
 const onBookSelect = (book) => {
@@ -48,16 +46,16 @@ const onBookSelect = (book) => {
   width: 90%;
   height: 2px;
   margin: 8px 0 0 0;
-  background: #e1e1e1;
+  background: map-get(variables.$colors, content-light);
 }
 
 .book-item{
-  padding: 4px 12px;
+  padding: 4px 0;
   box-sizing: border-box;
   font-size: 20px;
   cursor: pointer;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: flex-start;
   flex-flow: column;
   width: 100%;
@@ -65,18 +63,18 @@ const onBookSelect = (book) => {
 
 .book-title{
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   gap: 8px;
   padding: 0 4px;
   box-sizing: border-box;
   width: 100%;
   &.is-selected{
-    color: map-get(variables.$colors, primary);
+    color: map-get(variables.$colors, primaryDark);
     font-weight: 500;
   }
   &:hover {
-    background: map-get(variables.$colors, surfaceContainer);
+    background: map-get(variables.$colors, primary);
   }
 }
 </style>

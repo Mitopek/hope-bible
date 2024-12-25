@@ -25,12 +25,12 @@ const emit = defineEmits<Emits>()
 @use '../variables.scss' as variables;
 
 .toggle-testament{
-  padding: 12px;
+  padding: 4px 0;
   cursor: pointer;
   display: flex;
   gap: 12px;
   font-size: 22px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-weight: 500;
 }

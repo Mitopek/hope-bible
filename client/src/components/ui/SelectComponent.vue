@@ -63,7 +63,7 @@ const additionalStyles = $computed(() => {
 @use "../../variables.scss" as variables;
 .header{
   padding: 6px;
-  background: map-get(variables.$colors, surfaceContainerLow);
+  background: map-get(variables.$colors, surfaceContainerHigh);
   border: 1px solid map-get(variables.$colors, surfaceContainerHighest);
   cursor: pointer;
   border-radius: 8px;
@@ -87,7 +87,7 @@ const additionalStyles = $computed(() => {
 }
 
 .options{
-  background: map-get(variables.$colors, surfaceContainer);
+  background: map-get(variables.$colors, surfaceContainerHigh);
   max-height: 70vh;
   width: 200px;
   white-space: nowrap;
@@ -105,7 +105,7 @@ const additionalStyles = $computed(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   &:hover{
-    background: map-get(variables.$colors, surfaceContainerLow);
+    background: map-get(variables.$colors, surfaceContainer);
   }
 }
 </style>

@@ -2,7 +2,8 @@ import {$ref, $$, $, $computed} from "@vue-macros/reactivity-transform/macros";
 import {BooksList} from "../constants/BooksList.ts";
 import {useBibleApi} from "./api/useBibleApi.ts";
 import {IBibleResponseEntity} from "../types/responseEntities/IBibleResponseEntity.ts";
-import {watch} from "vue";
+import {onMounted, watch} from "vue";
+import {IReadHistoryItem} from "./types/IReadHistoryItem.ts";
 
 export function useBible() {
   let availableBibles = $ref<IBibleResponseEntity[]>([])
@@ -10,6 +11,9 @@ export function useBible() {
   let selectedBibleId = $ref<string|null>(null)
   let selectedBook = $ref(BooksList[0])
   let selectedChapter = $ref(1)
+  let isFetchingVerses = $ref(false)
+
+  let readHistory = $ref<IReadHistoryItem[]>([])
 
   let currentVerses = $ref<{
     verse: string,
@@ -59,12 +63,31 @@ export function useBible() {
     }
   }
 
+  const addHistoryItem = (item: IReadHistoryItem) => {
+    if(readHistory[0]?.book === item.book && readHistory[0]?.chapter === item.chapter) {
+      return
+    }
+    readHistory = [item, ...readHistory]
+    localStorage.setItem('readHistory', JSON.stringify(readHistory))
+  }
+
   watch([$$(selectedBibleId), $$(selectedBook), $$(selectedChapter)], async () => {
     if (selectedBibleId && selectedBook && selectedChapter) {
+      isFetchingVerses = true
       const {verses} = await getChapter(selectedBible.abbreviation, selectedBook.value, selectedChapter)
+      addHistoryItem({
+        book: selectedBook.value,
+        chapter: selectedChapter,
+        timestamp: Date.now()
+      })
       currentVerses = verses
+      isFetchingVerses = false
     }
   }, {immediate: true})
+
+  onMounted(() => {
+    readHistory = JSON.parse(localStorage.getItem('readHistory') || '[]')
+  })
 
   return $$({
     availableBibles,
@@ -75,5 +98,7 @@ export function useBible() {
     nextChapter,
     previousChapter,
     currentVerses,
+    isFetchingVerses,
+    readHistory,
   })
 }

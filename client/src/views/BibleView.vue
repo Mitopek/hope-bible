@@ -20,6 +20,7 @@ const {
   currentVerses,
   selectedBibleId,
   availableBibles,
+    isFetchingVerses,
 } = $(useProvideBibleFacade());
 
 onMounted(async () => {
@@ -38,11 +39,9 @@ const selectValues = $computed(() => {
 </script>
 
 <template>
-  <ScrollbarComponent>
     <DefaultView>
         <div class="bible-view">
           <BooksList/>
-          <LoadingComponent/>
           <div class="content">
             <ChaptersChooser
               :number-of-chapters="selectedBook.numberOfChapters"
@@ -52,8 +51,11 @@ const selectValues = $computed(() => {
               @previous="previousChapter"
             />
               <SelectComponent :options="selectValues" v-model="selectedBibleId" :width="360"/>
-              <div class="bible-text-container">
-                <span class="verse-container" v-for="verse in currentVerses" :key="verse.verse">
+            <div class="loading-wrapper" v-if="isFetchingVerses">
+              <LoadingComponent/>
+            </div>
+              <div class="bible-text-container" v-else>
+                <span :class="['verse-container', {'is-loading': isFetchingVerses}]" v-for="verse in currentVerses" :key="verse.verse">
                   <span class="verse-number">({{verse.verse}})</span> <span class="verse-text">{{verse.text}}</span>
                 </span>
             </div>
@@ -61,16 +63,26 @@ const selectValues = $computed(() => {
           <HistoryList/>
         </div>
     </DefaultView>
-  </ScrollbarComponent>
 </template>
 
 <style scoped lang="scss">
 @use "../variables.scss" as variables;
 
+.loading-wrapper{
+ padding: 20px;
+  top: 20px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
 .bible-view {
   width: 100%;
   display: grid;
-  grid-template-columns: 300px 1fr 300px;
+  grid-template-columns: 240px 1fr 240px;
 }
 
 .select-wrapper{
@@ -80,8 +92,9 @@ const selectValues = $computed(() => {
 .verse-text{
   padding: 0 2px 0 2px;
   cursor: pointer;
+  transition: background 0.3s;
   &:hover{
-    color: map-get(variables.$colors, primary);
+    background: map-get(variables.$colors, primary);
   }
 }
 
@@ -91,20 +104,27 @@ const selectValues = $computed(() => {
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  box-sizing: border-box;
   width: 100%;
 }
 
 .verse-number{
   font-weight: bold;
-  color: map-get(variables.$colors, primary);
+  color: map-get(variables.$colors, primaryDark);
   margin-left: 4px;
+}
+
+.verse-container{
+  &.is-loading {
+    opacity: 0.3;
+  }
 }
 
 .bible-text-container{
   padding: 20px;
-  background: map-get(variables.$colors, surfaceContainerLow);
-  border-radius: 20px;
+  //border: 1px solid map-get(variables.$colors, content-light);
   text-align: justify;
+  position: relative;
   font-size: 1.2rem;
 }
 </style>

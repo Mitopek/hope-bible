@@ -6,8 +6,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: map-get(variables.$colors, onSurface);
-  background-color: map-get(variables.$colors, surfaceContainerLowest);
+  color: map-get(variables.$colors, content-normal);
+  background-color: map-get(variables.$colors, surfaceContainerHighest);
 
   font-synthesis: none;
   overflow: hidden;

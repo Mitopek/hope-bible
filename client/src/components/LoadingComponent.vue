@@ -18,7 +18,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background: map-get(variables.$colors, primary);
+  background: #181717;
   border-radius: 50%;
   animation: dot-scale 2.5s infinite ease-in-out;
 }

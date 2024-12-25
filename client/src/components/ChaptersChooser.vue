@@ -46,8 +46,9 @@ const emit = defineEmits<Emits>()
   display: grid;
   grid-template-columns: repeat(10, 44px);
   font-size: 20px;
+  border-radius: 2px;
   flex-wrap: wrap;
-  background: map-get(variables.$colors, surfaceContainerLow);
+  border: 1px solid map-get(variables.$colors, content-dark);
 }
 
 .chapter-item {
@@ -55,23 +56,21 @@ const emit = defineEmits<Emits>()
   padding: 4px;
   box-sizing: border-box;
   &.is-selected {
-    color: map-get(variables.$colors, primary);
+    color: map-get(variables.$colors, primaryDark);
     font-weight: 500;
   }
   &:hover {
-    background: map-get(variables.$colors, surfaceContainer);
+    background: map-get(variables.$colors, primary);
   }
 }
 
 .icon{
   cursor: pointer;
   font-size: 40px;
-  color: map-get(variables.$colors, content-dark);
 }
 
 .icon-wrapper{
-  padding: 8px;
-  background: map-get(variables.$colors, surfaceContainerLow);
+  padding: 3px 8px;
 }
 
 .left-icon{
